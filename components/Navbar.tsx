@@ -3,16 +3,16 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export function Navbar() {
+function Navbar() {
   const currentRoute = usePathname();
 
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
-        <a className="btn btn-ghost normal-case text-xl">nextjs-starter</a>
+        <a className="text-xl normal-case btn btn-ghost">nextjs-starter</a>
       </div>
       <div className="flex-none">
-        <ul className="menu menu-horizontal p-0">
+        <ul className="p-0 menu menu-horizontal">
           <li>
             <Link
               href="/"
@@ -34,3 +34,5 @@ export function Navbar() {
     </div>
   );
 }
+
+export default Navbar;
