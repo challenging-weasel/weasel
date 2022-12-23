@@ -24,7 +24,6 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@apollo/rover": "^0.10.0",
     "@babel/core": "^7.20.7",
     "@graphql-codegen/add": "^3.2.3",
     "@graphql-codegen/cli": "^2.16.1",
