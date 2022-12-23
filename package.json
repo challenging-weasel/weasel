@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently --names Next,GraphQL -c bgBlue.bold,bgCyan.bold 'next dev' \"rover dev --url ${NEXT_PUBLIC_SUPABASE_URL} --name main --elv2-license accept\" ",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start -p ${PORT:-8080}",
     "lint": "next lint",
