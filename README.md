@@ -80,9 +80,10 @@ brew upgrade supabase
 
 ### 첫 화면
 
-- 함께해요
-  - 챌린지 만들기
-- 혼자해요
+- 닉네임 (닉네임을 정해주세요.)
+
+- 챌린지 만들기
+- 챌린지 참여하기
 
   - 챌린지 만들기
   - (?): 브라우저
@@ -91,47 +92,59 @@ brew upgrade supabase
 
 - 완전히 처음 왔을 시 문구 노출: _완전히 처음 오셨나보네요!_
 
-로그인하기 (?) 로그인하게 되면 브라우저에 저장되던 id는 모두 안전하게 저장됩니다.
+로그인하기 (?)-_로그인을 하면 기록이 더 안전하게 저장됩니다._
 
-로그인 한 흔적이 있다면, 로그인하기 버튼 강조하기.
-
-- 카카오로 로그인한 기록이 있어요. 로그인하기
+- 카카오로 로그인하기 (+ 이전에 로그인 했어요)
 - 네이버로 로그인하기
 - 구글로 로그인하기
 - 로그인 없이 계속하기
 
 ## DB 구성
 
-### 챌린지 challenge
+### 챌린지 challenges
 
 - `id`, `created_at`, `updated_at`, `deleted_at`
-- `name`: 노출되는 이름 용도
+- `title`: 챌린지 이름
+- `desc`: 챌린지 설명
 - `public_id`: 초대용 id
-- `config`: {type: 'alone' | 'together', term: number, term_condition: 'day' | 'week' | 'month'}
 - `manager_id`: 관리자 id
+- `config` json
 
-### 인증샷 confirming
+### 인증샷 confirmations
 
 - `id`, `created_at`, `updated_at`, `deleted_at`
 - `participation_id`: 참여 id
-- `images`: [{image_url: string, width: number, height: number, mimetype: string}]
-- `status`: `pending` | `approved` | `rejected`;
-- `date`: 인증이 인증되는 시간. 변경할 수도 있고, 변경못할 수도 있음.
+- `images`: [{image_url: string, width: number, height: number, mimetype: string, time: 인증시간}]
+- `status`:
+  - `pending` 일단 인증을 올린 상태
+  - `approved` | `rejected`;
+- `date`: 인증 시간. 변경할 수도 있고, 변경못할 수도 있음.
+- `title`: 인증 제목
+- `desc`: 설명
 - `creator_id`: 만든 사람 id
 
-### 참여 participation
+### 참여 participations
 
 - `id`, `created_at`, `updated_at`, `deleted_at`
-- `user_id`: 참여자 id
+- `profile_id`: 참여자 id
 - `challenge_id`: 챌린지 id
-- `status`: `in_progress` | `success` | `fail` | `abandoned` | `ready` | `waiting_for_approval` - 대개 관리자가 직접 세팅하도록 함.
-- `term_condition`: 기간 조건 (기본적으로 challenge의 term_condition 을 적용하나, 오버라이딩이 필요할 경우 설정한다.)
+- `status`: string. 대개 관리자가 직접 세팅하도록 하지만 설정에 따라 자동으로 설정할 수도 있음.
+  - `in_progress`: 현재 진행 중
+  - `success`: 성공했음.
+  - `fail`: 실패했음.
+  - `abandoned`: 취소됨 / 중간 탈주
+  - `ready`: 시작하기 전
+  - `waiting_for_approval`: 관리자가 승인해야 함.
+- `config`: 기타 설정. 기간 조건 (기본적으로 challenge의 term_condition 을 적용하나, 오버라이딩이 필요할 경우 설정한다.)
+- `title`: 인증 제목
+- `desc`: 설명
 
-### 사용자 user
+### 사용자 profiles
 
 - `id`, `created_at`, `updated_at`, `deleted_at`
 - `auth_id`: 인증된 user id
 - `name`: 이름
+- `desc`: 자기소개
 - `public_id`: 표시용 id
 
 ## 챌린지 config
@@ -144,6 +157,9 @@ type ChallengeConfig = {
   autoSuccess: boolean; // 자동으로 success로 바꾸는지 여부
   allowDateChange: boolean; // 인증 날짜를 변경할 수 있는지 여부
   allowImageChange: boolean; // 인증 이미지를 변경할 수 있는지 여부
+  allowInappropriateDate: boolean; // 날짜 조건에 맞지 않아도 인증할 수 있는지 여부
+  allowExceededconfirmation: boolean; // 현재 조건이 충족해도 추가로 인증할 수 있는지 여부 (기록 남기기 용도..?)
+  allowParticipationOngoing: boolean; // 챌린지가 진행 도중에 참여할 수 있는지 여부
 };
 ```
 
