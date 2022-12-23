@@ -1,23 +1,23 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
 
-import Navbar from '@/components/Navbar';
+import Navbar from "@/components/Navbar";
 
-describe('Navbar', () => {
-  it('renders Home link', () => {
+describe("Navbar", () => {
+  it("renders Home link", () => {
     render(<Navbar />);
 
-    const el = screen.getAllByRole('link');
+    const el = screen.getAllByRole("link");
 
-    expect(el[0]).toHaveTextContent('Home');
-    expect(el[0]).toHaveAttribute('href', '/');
+    expect(el[0]).toHaveTextContent("Home");
+    expect(el[0]).toHaveAttribute("href", "/");
   });
 
-  it('renders About link', () => {
+  it("renders About link", () => {
     render(<Navbar />);
 
-    const el = screen.getAllByRole('link');
+    const el = screen.getAllByRole("link");
 
-    expect(el[1]).toHaveTextContent('About');
-    expect(el[1]).toHaveAttribute('href', '/about');
+    expect(el[1]).toHaveTextContent("About");
+    expect(el[1]).toHaveAttribute("href", "/about");
   });
 });

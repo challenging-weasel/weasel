@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 function Navbar() {
   const currentRoute = usePathname();
@@ -16,7 +16,7 @@ function Navbar() {
           <li>
             <Link
               href="/"
-              className={currentRoute === '/' ? 'active' : undefined}
+              className={currentRoute === "/" ? "active" : undefined}
             >
               Home
             </Link>
@@ -24,7 +24,7 @@ function Navbar() {
           <li>
             <Link
               href="/about"
-              className={currentRoute === '/about' ? 'active' : undefined}
+              className={currentRoute === "/about" ? "active" : undefined}
             >
               About
             </Link>

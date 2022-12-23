@@ -31,78 +31,78 @@ export type Scalars = {
 
 /** Boolean expression comparing fields on type "BigInt" */
 export type IBigIntFilter = {
-  eq?: InputMaybe<Scalars['BigInt']>;
-  gt?: InputMaybe<Scalars['BigInt']>;
-  gte?: InputMaybe<Scalars['BigInt']>;
-  in?: InputMaybe<Array<Scalars['BigInt']>>;
-  lt?: InputMaybe<Scalars['BigInt']>;
-  lte?: InputMaybe<Scalars['BigInt']>;
-  neq?: InputMaybe<Scalars['BigInt']>;
+  eq?: InputMaybe<Scalars["BigInt"]>;
+  gt?: InputMaybe<Scalars["BigInt"]>;
+  gte?: InputMaybe<Scalars["BigInt"]>;
+  in?: InputMaybe<Array<Scalars["BigInt"]>>;
+  lt?: InputMaybe<Scalars["BigInt"]>;
+  lte?: InputMaybe<Scalars["BigInt"]>;
+  neq?: InputMaybe<Scalars["BigInt"]>;
 };
 
 /** Boolean expression comparing fields on type "Boolean" */
 export type IBooleanFilter = {
-  eq?: InputMaybe<Scalars['Boolean']>;
-  gt?: InputMaybe<Scalars['Boolean']>;
-  gte?: InputMaybe<Scalars['Boolean']>;
-  in?: InputMaybe<Array<Scalars['Boolean']>>;
-  lt?: InputMaybe<Scalars['Boolean']>;
-  lte?: InputMaybe<Scalars['Boolean']>;
-  neq?: InputMaybe<Scalars['Boolean']>;
+  eq?: InputMaybe<Scalars["Boolean"]>;
+  gt?: InputMaybe<Scalars["Boolean"]>;
+  gte?: InputMaybe<Scalars["Boolean"]>;
+  in?: InputMaybe<Array<Scalars["Boolean"]>>;
+  lt?: InputMaybe<Scalars["Boolean"]>;
+  lte?: InputMaybe<Scalars["Boolean"]>;
+  neq?: InputMaybe<Scalars["Boolean"]>;
 };
 
 /** Boolean expression comparing fields on type "Date" */
 export type IDateFilter = {
-  eq?: InputMaybe<Scalars['Date']>;
-  gt?: InputMaybe<Scalars['Date']>;
-  gte?: InputMaybe<Scalars['Date']>;
-  in?: InputMaybe<Array<Scalars['Date']>>;
-  lt?: InputMaybe<Scalars['Date']>;
-  lte?: InputMaybe<Scalars['Date']>;
-  neq?: InputMaybe<Scalars['Date']>;
+  eq?: InputMaybe<Scalars["Date"]>;
+  gt?: InputMaybe<Scalars["Date"]>;
+  gte?: InputMaybe<Scalars["Date"]>;
+  in?: InputMaybe<Array<Scalars["Date"]>>;
+  lt?: InputMaybe<Scalars["Date"]>;
+  lte?: InputMaybe<Scalars["Date"]>;
+  neq?: InputMaybe<Scalars["Date"]>;
 };
 
 /** Boolean expression comparing fields on type "Datetime" */
 export type IDatetimeFilter = {
-  eq?: InputMaybe<Scalars['Datetime']>;
-  gt?: InputMaybe<Scalars['Datetime']>;
-  gte?: InputMaybe<Scalars['Datetime']>;
-  in?: InputMaybe<Array<Scalars['Datetime']>>;
-  lt?: InputMaybe<Scalars['Datetime']>;
-  lte?: InputMaybe<Scalars['Datetime']>;
-  neq?: InputMaybe<Scalars['Datetime']>;
+  eq?: InputMaybe<Scalars["Datetime"]>;
+  gt?: InputMaybe<Scalars["Datetime"]>;
+  gte?: InputMaybe<Scalars["Datetime"]>;
+  in?: InputMaybe<Array<Scalars["Datetime"]>>;
+  lt?: InputMaybe<Scalars["Datetime"]>;
+  lte?: InputMaybe<Scalars["Datetime"]>;
+  neq?: InputMaybe<Scalars["Datetime"]>;
 };
 
 /** Boolean expression comparing fields on type "Float" */
 export type IFloatFilter = {
-  eq?: InputMaybe<Scalars['Float']>;
-  gt?: InputMaybe<Scalars['Float']>;
-  gte?: InputMaybe<Scalars['Float']>;
-  in?: InputMaybe<Array<Scalars['Float']>>;
-  lt?: InputMaybe<Scalars['Float']>;
-  lte?: InputMaybe<Scalars['Float']>;
-  neq?: InputMaybe<Scalars['Float']>;
+  eq?: InputMaybe<Scalars["Float"]>;
+  gt?: InputMaybe<Scalars["Float"]>;
+  gte?: InputMaybe<Scalars["Float"]>;
+  in?: InputMaybe<Array<Scalars["Float"]>>;
+  lt?: InputMaybe<Scalars["Float"]>;
+  lte?: InputMaybe<Scalars["Float"]>;
+  neq?: InputMaybe<Scalars["Float"]>;
 };
 
 /** Boolean expression comparing fields on type "ID" */
 export type IIdFilter = {
-  eq?: InputMaybe<Scalars['ID']>;
+  eq?: InputMaybe<Scalars["ID"]>;
 };
 
 /** Boolean expression comparing fields on type "Int" */
 export type IIntFilter = {
-  eq?: InputMaybe<Scalars['Int']>;
-  gt?: InputMaybe<Scalars['Int']>;
-  gte?: InputMaybe<Scalars['Int']>;
-  in?: InputMaybe<Array<Scalars['Int']>>;
-  lt?: InputMaybe<Scalars['Int']>;
-  lte?: InputMaybe<Scalars['Int']>;
-  neq?: InputMaybe<Scalars['Int']>;
+  eq?: InputMaybe<Scalars["Int"]>;
+  gt?: InputMaybe<Scalars["Int"]>;
+  gte?: InputMaybe<Scalars["Int"]>;
+  in?: InputMaybe<Array<Scalars["Int"]>>;
+  lt?: InputMaybe<Scalars["Int"]>;
+  lte?: InputMaybe<Scalars["Int"]>;
+  neq?: InputMaybe<Scalars["Int"]>;
 };
 
 /** The root type for creating and mutating data */
 export type IMutation = {
-  __typename?: 'Mutation';
+  __typename?: "Mutation";
   /** Deletes zero or more records from the `challenges` collection */
   deleteFromchallengesCollection: IChallengesDeleteResponse;
   /** Deletes zero or more records from the `confirmations` collection */
@@ -131,25 +131,25 @@ export type IMutation = {
 
 /** The root type for creating and mutating data */
 export type IMutationDeleteFromchallengesCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IChallengesFilter>;
 };
 
 /** The root type for creating and mutating data */
 export type IMutationDeleteFromconfirmationsCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IConfirmationsFilter>;
 };
 
 /** The root type for creating and mutating data */
 export type IMutationDeleteFromparticipationsCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IParticipationsFilter>;
 };
 
 /** The root type for creating and mutating data */
 export type IMutationDeleteFromprofilesCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IProfilesFilter>;
 };
 
@@ -175,59 +175,59 @@ export type IMutationInsertIntoprofilesCollectionArgs = {
 
 /** The root type for creating and mutating data */
 export type IMutationUpdatechallengesCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IChallengesFilter>;
   set: IChallengesUpdateInput;
 };
 
 /** The root type for creating and mutating data */
 export type IMutationUpdateconfirmationsCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IConfirmationsFilter>;
   set: IConfirmationsUpdateInput;
 };
 
 /** The root type for creating and mutating data */
 export type IMutationUpdateparticipationsCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IParticipationsFilter>;
   set: IParticipationsUpdateInput;
 };
 
 /** The root type for creating and mutating data */
 export type IMutationUpdateprofilesCollectionArgs = {
-  atMost?: Scalars['Int'];
+  atMost?: Scalars["Int"];
   filter?: InputMaybe<IProfilesFilter>;
   set: IProfilesUpdateInput;
 };
 
 export type INode = {
   /** Retrieves a record by `ID` */
-  nodeId: Scalars['ID'];
+  nodeId: Scalars["ID"];
 };
 
 /** Defines a per-field sorting order */
 export type IOrderByDirection =
   /** Ascending order, nulls first */
-  | 'AscNullsFirst'
+  | "AscNullsFirst"
   /** Ascending order, nulls last */
-  | 'AscNullsLast'
+  | "AscNullsLast"
   /** Descending order, nulls first */
-  | 'DescNullsFirst'
+  | "DescNullsFirst"
   /** Descending order, nulls last */
-  | 'DescNullsLast';
+  | "DescNullsLast";
 
 export type IPageInfo = {
-  __typename?: 'PageInfo';
-  endCursor?: Maybe<Scalars['String']>;
-  hasNextPage: Scalars['Boolean'];
-  hasPreviousPage: Scalars['Boolean'];
-  startCursor?: Maybe<Scalars['String']>;
+  __typename?: "PageInfo";
+  endCursor?: Maybe<Scalars["String"]>;
+  hasNextPage: Scalars["Boolean"];
+  hasPreviousPage: Scalars["Boolean"];
+  startCursor?: Maybe<Scalars["String"]>;
 };
 
 /** The root type for querying data */
 export type IQuery = {
-  __typename?: 'Query';
+  __typename?: "Query";
   /** A pagable collection of type `challenges` */
   challengesCollection?: Maybe<IChallengesConnection>;
   /** A pagable collection of type `confirmations` */
@@ -242,121 +242,121 @@ export type IQuery = {
 
 /** The root type for querying data */
 export type IQueryChallengesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IChallengesFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IChallengesOrderBy>>;
 };
 
 /** The root type for querying data */
 export type IQueryConfirmationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IConfirmationsFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IConfirmationsOrderBy>>;
 };
 
 /** The root type for querying data */
 export type IQueryNodeArgs = {
-  nodeId: Scalars['ID'];
+  nodeId: Scalars["ID"];
 };
 
 /** The root type for querying data */
 export type IQueryParticipationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IParticipationsFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IParticipationsOrderBy>>;
 };
 
 /** The root type for querying data */
 export type IQueryProfilesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IProfilesFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IProfilesOrderBy>>;
 };
 
 /** Boolean expression comparing fields on type "String" */
 export type IStringFilter = {
-  eq?: InputMaybe<Scalars['String']>;
-  gt?: InputMaybe<Scalars['String']>;
-  gte?: InputMaybe<Scalars['String']>;
-  in?: InputMaybe<Array<Scalars['String']>>;
-  lt?: InputMaybe<Scalars['String']>;
-  lte?: InputMaybe<Scalars['String']>;
-  neq?: InputMaybe<Scalars['String']>;
+  eq?: InputMaybe<Scalars["String"]>;
+  gt?: InputMaybe<Scalars["String"]>;
+  gte?: InputMaybe<Scalars["String"]>;
+  in?: InputMaybe<Array<Scalars["String"]>>;
+  lt?: InputMaybe<Scalars["String"]>;
+  lte?: InputMaybe<Scalars["String"]>;
+  neq?: InputMaybe<Scalars["String"]>;
 };
 
 /** Boolean expression comparing fields on type "Time" */
 export type ITimeFilter = {
-  eq?: InputMaybe<Scalars['Time']>;
-  gt?: InputMaybe<Scalars['Time']>;
-  gte?: InputMaybe<Scalars['Time']>;
-  in?: InputMaybe<Array<Scalars['Time']>>;
-  lt?: InputMaybe<Scalars['Time']>;
-  lte?: InputMaybe<Scalars['Time']>;
-  neq?: InputMaybe<Scalars['Time']>;
+  eq?: InputMaybe<Scalars["Time"]>;
+  gt?: InputMaybe<Scalars["Time"]>;
+  gte?: InputMaybe<Scalars["Time"]>;
+  in?: InputMaybe<Array<Scalars["Time"]>>;
+  lt?: InputMaybe<Scalars["Time"]>;
+  lte?: InputMaybe<Scalars["Time"]>;
+  neq?: InputMaybe<Scalars["Time"]>;
 };
 
 /** Boolean expression comparing fields on type "UUID" */
 export type IUuidFilter = {
-  eq?: InputMaybe<Scalars['UUID']>;
-  in?: InputMaybe<Array<Scalars['UUID']>>;
-  neq?: InputMaybe<Scalars['UUID']>;
+  eq?: InputMaybe<Scalars["UUID"]>;
+  in?: InputMaybe<Array<Scalars["UUID"]>>;
+  neq?: InputMaybe<Scalars["UUID"]>;
 };
 
 export type IChallenges = INode & {
-  __typename?: 'challenges';
-  config: Scalars['JSON'];
-  created_at: Scalars['Datetime'];
-  deleted_at?: Maybe<Scalars['Datetime']>;
-  desc?: Maybe<Scalars['String']>;
-  id: Scalars['BigInt'];
-  manager_id: Scalars['BigInt'];
+  __typename?: "challenges";
+  config: Scalars["JSON"];
+  created_at: Scalars["Datetime"];
+  deleted_at?: Maybe<Scalars["Datetime"]>;
+  desc?: Maybe<Scalars["String"]>;
+  id: Scalars["BigInt"];
+  manager_id: Scalars["BigInt"];
   /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID'];
+  nodeId: Scalars["ID"];
   participationsCollection?: Maybe<IParticipationsConnection>;
   profiles?: Maybe<IProfiles>;
-  public_id: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Datetime'];
+  public_id: Scalars["String"];
+  title?: Maybe<Scalars["String"]>;
+  updated_at: Scalars["Datetime"];
 };
 
 export type IChallengesParticipationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IParticipationsFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IParticipationsOrderBy>>;
 };
 
 export type IChallengesConnection = {
-  __typename?: 'challengesConnection';
+  __typename?: "challengesConnection";
   edges: Array<IChallengesEdge>;
   pageInfo: IPageInfo;
 };
 
 export type IChallengesDeleteResponse = {
-  __typename?: 'challengesDeleteResponse';
+  __typename?: "challengesDeleteResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IChallenges>;
 };
 
 export type IChallengesEdge = {
-  __typename?: 'challengesEdge';
-  cursor: Scalars['String'];
+  __typename?: "challengesEdge";
+  cursor: Scalars["String"];
   node: IChallenges;
 };
 
@@ -373,20 +373,20 @@ export type IChallengesFilter = {
 };
 
 export type IChallengesInsertInput = {
-  config?: InputMaybe<Scalars['JSON']>;
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  manager_id?: InputMaybe<Scalars['BigInt']>;
-  public_id?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
+  config?: InputMaybe<Scalars["JSON"]>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  manager_id?: InputMaybe<Scalars["BigInt"]>;
+  public_id?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
 };
 
 export type IChallengesInsertResponse = {
-  __typename?: 'challengesInsertResponse';
+  __typename?: "challengesInsertResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IChallenges>;
 };
@@ -403,60 +403,60 @@ export type IChallengesOrderBy = {
 };
 
 export type IChallengesUpdateInput = {
-  config?: InputMaybe<Scalars['JSON']>;
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  manager_id?: InputMaybe<Scalars['BigInt']>;
-  public_id?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
+  config?: InputMaybe<Scalars["JSON"]>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  manager_id?: InputMaybe<Scalars["BigInt"]>;
+  public_id?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
 };
 
 export type IChallengesUpdateResponse = {
-  __typename?: 'challengesUpdateResponse';
+  __typename?: "challengesUpdateResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IChallenges>;
 };
 
 export type IConfirmations = INode & {
-  __typename?: 'confirmations';
-  created_at: Scalars['Datetime'];
-  creator_id: Scalars['BigInt'];
-  date: Scalars['Datetime'];
-  deleted_at?: Maybe<Scalars['Datetime']>;
-  desc?: Maybe<Scalars['String']>;
-  id: Scalars['BigInt'];
-  images?: Maybe<Scalars['JSON']>;
+  __typename?: "confirmations";
+  created_at: Scalars["Datetime"];
+  creator_id: Scalars["BigInt"];
+  date: Scalars["Datetime"];
+  deleted_at?: Maybe<Scalars["Datetime"]>;
+  desc?: Maybe<Scalars["String"]>;
+  id: Scalars["BigInt"];
+  images?: Maybe<Scalars["JSON"]>;
   /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID'];
-  participation_id: Scalars['BigInt'];
+  nodeId: Scalars["ID"];
+  participation_id: Scalars["BigInt"];
   participations?: Maybe<IParticipations>;
   profiles?: Maybe<IProfiles>;
-  status: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Datetime'];
+  status: Scalars["String"];
+  title?: Maybe<Scalars["String"]>;
+  updated_at: Scalars["Datetime"];
 };
 
 export type IConfirmationsConnection = {
-  __typename?: 'confirmationsConnection';
+  __typename?: "confirmationsConnection";
   edges: Array<IConfirmationsEdge>;
   pageInfo: IPageInfo;
 };
 
 export type IConfirmationsDeleteResponse = {
-  __typename?: 'confirmationsDeleteResponse';
+  __typename?: "confirmationsDeleteResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IConfirmations>;
 };
 
 export type IConfirmationsEdge = {
-  __typename?: 'confirmationsEdge';
-  cursor: Scalars['String'];
+  __typename?: "confirmationsEdge";
+  cursor: Scalars["String"];
   node: IConfirmations;
 };
 
@@ -475,22 +475,22 @@ export type IConfirmationsFilter = {
 };
 
 export type IConfirmationsInsertInput = {
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  creator_id?: InputMaybe<Scalars['BigInt']>;
-  date?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  images?: InputMaybe<Scalars['JSON']>;
-  participation_id?: InputMaybe<Scalars['BigInt']>;
-  status?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  creator_id?: InputMaybe<Scalars["BigInt"]>;
+  date?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  images?: InputMaybe<Scalars["JSON"]>;
+  participation_id?: InputMaybe<Scalars["BigInt"]>;
+  status?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
 };
 
 export type IConfirmationsInsertResponse = {
-  __typename?: 'confirmationsInsertResponse';
+  __typename?: "confirmationsInsertResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IConfirmations>;
 };
@@ -509,71 +509,71 @@ export type IConfirmationsOrderBy = {
 };
 
 export type IConfirmationsUpdateInput = {
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  creator_id?: InputMaybe<Scalars['BigInt']>;
-  date?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  images?: InputMaybe<Scalars['JSON']>;
-  participation_id?: InputMaybe<Scalars['BigInt']>;
-  status?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  creator_id?: InputMaybe<Scalars["BigInt"]>;
+  date?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  images?: InputMaybe<Scalars["JSON"]>;
+  participation_id?: InputMaybe<Scalars["BigInt"]>;
+  status?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
 };
 
 export type IConfirmationsUpdateResponse = {
-  __typename?: 'confirmationsUpdateResponse';
+  __typename?: "confirmationsUpdateResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IConfirmations>;
 };
 
 export type IParticipations = INode & {
-  __typename?: 'participations';
-  challenge_id: Scalars['BigInt'];
+  __typename?: "participations";
+  challenge_id: Scalars["BigInt"];
   challenges?: Maybe<IChallenges>;
-  config: Scalars['JSON'];
+  config: Scalars["JSON"];
   confirmationsCollection?: Maybe<IConfirmationsConnection>;
-  created_at: Scalars['Datetime'];
-  deleted_at?: Maybe<Scalars['Datetime']>;
-  desc?: Maybe<Scalars['String']>;
-  id: Scalars['BigInt'];
+  created_at: Scalars["Datetime"];
+  deleted_at?: Maybe<Scalars["Datetime"]>;
+  desc?: Maybe<Scalars["String"]>;
+  id: Scalars["BigInt"];
   /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID'];
-  profile_id: Scalars['BigInt'];
+  nodeId: Scalars["ID"];
+  profile_id: Scalars["BigInt"];
   profiles?: Maybe<IProfiles>;
-  status: Scalars['String'];
-  title?: Maybe<Scalars['String']>;
-  updated_at: Scalars['Datetime'];
+  status: Scalars["String"];
+  title?: Maybe<Scalars["String"]>;
+  updated_at: Scalars["Datetime"];
 };
 
 export type IParticipationsConfirmationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IConfirmationsFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IConfirmationsOrderBy>>;
 };
 
 export type IParticipationsConnection = {
-  __typename?: 'participationsConnection';
+  __typename?: "participationsConnection";
   edges: Array<IParticipationsEdge>;
   pageInfo: IPageInfo;
 };
 
 export type IParticipationsDeleteResponse = {
-  __typename?: 'participationsDeleteResponse';
+  __typename?: "participationsDeleteResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IParticipations>;
 };
 
 export type IParticipationsEdge = {
-  __typename?: 'participationsEdge';
-  cursor: Scalars['String'];
+  __typename?: "participationsEdge";
+  cursor: Scalars["String"];
   node: IParticipations;
 };
 
@@ -591,21 +591,21 @@ export type IParticipationsFilter = {
 };
 
 export type IParticipationsInsertInput = {
-  challenge_id?: InputMaybe<Scalars['BigInt']>;
-  config?: InputMaybe<Scalars['JSON']>;
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  profile_id?: InputMaybe<Scalars['BigInt']>;
-  status?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
+  challenge_id?: InputMaybe<Scalars["BigInt"]>;
+  config?: InputMaybe<Scalars["JSON"]>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  profile_id?: InputMaybe<Scalars["BigInt"]>;
+  status?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
 };
 
 export type IParticipationsInsertResponse = {
-  __typename?: 'participationsInsertResponse';
+  __typename?: "participationsInsertResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IParticipations>;
 };
@@ -623,86 +623,86 @@ export type IParticipationsOrderBy = {
 };
 
 export type IParticipationsUpdateInput = {
-  challenge_id?: InputMaybe<Scalars['BigInt']>;
-  config?: InputMaybe<Scalars['JSON']>;
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  profile_id?: InputMaybe<Scalars['BigInt']>;
-  status?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
+  challenge_id?: InputMaybe<Scalars["BigInt"]>;
+  config?: InputMaybe<Scalars["JSON"]>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  profile_id?: InputMaybe<Scalars["BigInt"]>;
+  status?: InputMaybe<Scalars["String"]>;
+  title?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
 };
 
 export type IParticipationsUpdateResponse = {
-  __typename?: 'participationsUpdateResponse';
+  __typename?: "participationsUpdateResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IParticipations>;
 };
 
 export type IProfiles = INode & {
-  __typename?: 'profiles';
+  __typename?: "profiles";
   challengesCollection?: Maybe<IChallengesConnection>;
   confirmationsCollection?: Maybe<IConfirmationsConnection>;
-  created_at: Scalars['Datetime'];
-  deleted_at?: Maybe<Scalars['Datetime']>;
-  desc?: Maybe<Scalars['String']>;
-  id: Scalars['BigInt'];
-  name?: Maybe<Scalars['String']>;
+  created_at: Scalars["Datetime"];
+  deleted_at?: Maybe<Scalars["Datetime"]>;
+  desc?: Maybe<Scalars["String"]>;
+  id: Scalars["BigInt"];
+  name?: Maybe<Scalars["String"]>;
   /** Globally Unique Record Identifier */
-  nodeId: Scalars['ID'];
+  nodeId: Scalars["ID"];
   participationsCollection?: Maybe<IParticipationsConnection>;
-  public_id: Scalars['String'];
-  updated_at: Scalars['Datetime'];
-  user_id?: Maybe<Scalars['UUID']>;
+  public_id: Scalars["String"];
+  updated_at: Scalars["Datetime"];
+  user_id?: Maybe<Scalars["UUID"]>;
 };
 
 export type IProfilesChallengesCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IChallengesFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IChallengesOrderBy>>;
 };
 
 export type IProfilesConfirmationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IConfirmationsFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IConfirmationsOrderBy>>;
 };
 
 export type IProfilesParticipationsCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']>;
-  before?: InputMaybe<Scalars['Cursor']>;
+  after?: InputMaybe<Scalars["Cursor"]>;
+  before?: InputMaybe<Scalars["Cursor"]>;
   filter?: InputMaybe<IParticipationsFilter>;
-  first?: InputMaybe<Scalars['Int']>;
-  last?: InputMaybe<Scalars['Int']>;
+  first?: InputMaybe<Scalars["Int"]>;
+  last?: InputMaybe<Scalars["Int"]>;
   orderBy?: InputMaybe<Array<IParticipationsOrderBy>>;
 };
 
 export type IProfilesConnection = {
-  __typename?: 'profilesConnection';
+  __typename?: "profilesConnection";
   edges: Array<IProfilesEdge>;
   pageInfo: IPageInfo;
 };
 
 export type IProfilesDeleteResponse = {
-  __typename?: 'profilesDeleteResponse';
+  __typename?: "profilesDeleteResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IProfiles>;
 };
 
 export type IProfilesEdge = {
-  __typename?: 'profilesEdge';
-  cursor: Scalars['String'];
+  __typename?: "profilesEdge";
+  cursor: Scalars["String"];
   node: IProfiles;
 };
 
@@ -719,19 +719,19 @@ export type IProfilesFilter = {
 };
 
 export type IProfilesInsertInput = {
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  public_id?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
-  user_id?: InputMaybe<Scalars['UUID']>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  public_id?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
+  user_id?: InputMaybe<Scalars["UUID"]>;
 };
 
 export type IProfilesInsertResponse = {
-  __typename?: 'profilesInsertResponse';
+  __typename?: "profilesInsertResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IProfiles>;
 };
@@ -748,19 +748,19 @@ export type IProfilesOrderBy = {
 };
 
 export type IProfilesUpdateInput = {
-  created_at?: InputMaybe<Scalars['Datetime']>;
-  deleted_at?: InputMaybe<Scalars['Datetime']>;
-  desc?: InputMaybe<Scalars['String']>;
-  name?: InputMaybe<Scalars['String']>;
-  public_id?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['Datetime']>;
-  user_id?: InputMaybe<Scalars['UUID']>;
+  created_at?: InputMaybe<Scalars["Datetime"]>;
+  deleted_at?: InputMaybe<Scalars["Datetime"]>;
+  desc?: InputMaybe<Scalars["String"]>;
+  name?: InputMaybe<Scalars["String"]>;
+  public_id?: InputMaybe<Scalars["String"]>;
+  updated_at?: InputMaybe<Scalars["Datetime"]>;
+  user_id?: InputMaybe<Scalars["UUID"]>;
 };
 
 export type IProfilesUpdateResponse = {
-  __typename?: 'profilesUpdateResponse';
+  __typename?: "profilesUpdateResponse";
   /** Count of the records impacted by the mutation */
-  affectedCount: Scalars['Int'];
+  affectedCount: Scalars["Int"];
   /** Array of records impacted by the mutation */
   records: Array<IProfiles>;
 };

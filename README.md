@@ -168,23 +168,23 @@ type ChallengeConfig = {
 ```ts
 type TermCondition =
   | {
-      type: 'count';
+      type: "count";
       start: timestampz;
       // 없을 시 끝나지 않음
       end?: timestampz;
       // 없을 시 반복되지 않음
       repeated?: {
-        type: 'day' | 'week' | 'month';
+        type: "day" | "week" | "month";
         value: number; // default: 1
       };
       count: number; // default: 1
     }
   | {
-      type: 'and' | 'or';
+      type: "and" | "or";
       condition: TermCondition[];
     }
   | {
-      type: 'after' | 'before';
+      type: "after" | "before";
       datetime: timestampz;
     };
 ```
