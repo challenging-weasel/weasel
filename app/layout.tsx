@@ -1,4 +1,4 @@
-import Navbar from "@/components/Navbar";
+import AntdConfigProvider from "./AntdConfigProvider";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,15 +7,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className="bg-gray-50">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
       <body>
-        <div className="flex flex-col items-center min-h-screen p-8 space-y-10">
-          <Navbar />
-          <main>{children}</main>
-        </div>
+        <AntdConfigProvider>
+          <div className="flex flex-col items-center">
+            {/* <Navbar /> */}
+            <main className="max-w-lg min-h-screen bg-white ">{children}</main>
+          </div>
+        </AntdConfigProvider>
       </body>
     </html>
   );

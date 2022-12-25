@@ -1,3 +1,5 @@
+// TODO: 현재 쓰이지 않으므로 삭제
+
 import { nanoid } from "nanoid";
 import type { NextRequest } from "next/server";
 

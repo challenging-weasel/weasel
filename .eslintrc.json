@@ -45,6 +45,8 @@
     ],
 
     "@typescript-eslint/switch-exhaustiveness-check": "error",
+    "default-case": "off",
+    "consistent-return": "off",
 
     "@next/next/no-img-element": "off",
 

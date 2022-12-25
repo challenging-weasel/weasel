@@ -10,3 +10,5 @@ export function getServerSideSupabaseConfig() {
     serviceRoleKey,
   };
 }
+
+export const defaultDateFormat = "YYYY-MM-DD";

@@ -1,3 +1,5 @@
+import type { NextRequest } from "next/server";
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type NullRemoved<T> = T extends null
   ? undefined
@@ -53,3 +55,28 @@ export const removeNullDeep = <T extends { [key: string]: any }>(
 
   return result;
 };
+
+export async function getJsonFromBody<T>(
+  req: NextRequest
+): Promise<Partial<T>> {
+  const reader = req.body?.getReader();
+  if (!reader) {
+    throw new Error("No reader");
+  }
+
+  const decoder = new TextDecoder();
+  let body = "";
+  const read = async () => {
+    const result = await reader.read();
+    if (result.done) {
+      return;
+    }
+    body += decoder.decode(result.value, { stream: true });
+    await read();
+  };
+
+  await read();
+  body += decoder.decode();
+
+  return JSON.parse(body) as T;
+}
