@@ -15,10 +15,15 @@ export type TermCondition =
   | AndOrTermCondition
   | AfterBeforeTermCondition;
 
-export type Repeated = {
-  type: "day" | "week" | "month";
-  value: number; // default: 1
-};
+export type Repeated =
+  | {
+      type: "period";
+      unit: "day" | "week" | "month";
+      value: number; // default: 1
+    }
+  | {
+      type: "no-repeat";
+    };
 
 export type CountTermCondition = {
   type: "count";
@@ -27,7 +32,7 @@ export type CountTermCondition = {
   // 없을 시 끝나지 않음
   end?: string;
   // 없을 시 반복되지 않음
-  repeated?: Repeated;
+  repeated: Repeated;
   count: number; // default: 1
 };
 

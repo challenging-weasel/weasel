@@ -13,8 +13,24 @@ import type {
 } from "./type";
 
 export function createRepeated(args?: PartialDeep<Repeated>): Repeated {
+  if (!args || !args.type) {
+    return {
+      type: "period",
+      unit: "week",
+      value: 1,
+    };
+  }
+
+  if (args.type === "no-repeat") {
+    return {
+      type: "no-repeat",
+      ...args,
+    };
+  }
+
   return {
-    type: "week",
+    type: "period",
+    unit: "week",
     value: 1,
     ...args,
   };
@@ -28,7 +44,7 @@ export function createCountTermCondition(
     start: dayjs(new Date()).add(7, "day").format(defaultDateFormat),
     count: 1,
     ...args,
-    repeated: args?.repeated ? createRepeated(args.repeated) : undefined,
+    repeated: createRepeated(args?.repeated),
   };
 }
 

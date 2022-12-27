@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, DatePicker, Input, InputNumber } from "antd";
+import { Button, DatePicker, Input, InputNumber, Select } from "antd";
 import type { Dayjs } from "dayjs";
 import type React from "react";
 import { useMemo, useState } from "react";
@@ -10,6 +10,7 @@ import { HiPlus } from "react-icons/hi";
 
 import ErrorLabel from "@/components/ErrorLabel";
 import Label from "@/components/Label";
+import type { Repeated } from "@/lib/challenge/type";
 
 type FormValues = {
   name: string;
@@ -17,6 +18,7 @@ type FormValues = {
   startDate: Dayjs;
   endDate: Dayjs;
   count: number;
+  repeated: Repeated;
 };
 
 const resolver: Resolver<FormValues> = async (values) => {
@@ -40,13 +42,25 @@ const NewChallenge: React.FC = () => {
     handleSubmit,
     formState: { errors },
     control,
-  } = useForm<FormValues>({ resolver });
+    watch,
+  } = useForm<FormValues>({
+    resolver,
+    defaultValues: {
+      repeated: {
+        type: "period",
+        unit: "week",
+        value: 1,
+      },
+    },
+  });
   const onSubmit = handleSubmit((data) => console.log(data));
   const [descriptionOpen, setDescriptionOpen] = useState(false);
 
   const oo = useMemo(() => {
     return register("name");
   }, [register]);
+
+  const formValues = watch();
 
   return (
     <form onSubmit={onSubmit}>
@@ -94,21 +108,43 @@ const NewChallenge: React.FC = () => {
 
         <div className="flex flex-col mb-4">
           <Label htmlFor="startDate">반복 주기</Label>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-2">
+            {formValues.repeated?.type === "period"}
             <Controller
-              name="startDate"
+              name="repeated.value"
               control={control}
-              render={({ field }) => <DatePicker id="startDate" {...field} />}
+              render={({ field }) => (
+                <InputNumber
+                  style={{ width: 50 }}
+                  id="repeated.value"
+                  {...field}
+                />
+              )}
             />
+
             <Controller
-              name="startDate"
+              name="repeated.type"
               control={control}
-              render={({ field }) => <DatePicker id="startDate" {...field} />}
-            />
-            <Controller
-              name="startDate"
-              control={control}
-              render={({ field }) => <DatePicker id="startDate" {...field} />}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  id="repeated.type"
+                  options={[
+                    {
+                      value: "day",
+                      label: "일",
+                    },
+                    {
+                      value: "week",
+                      label: "주",
+                    },
+                    {
+                      value: "month",
+                      label: "월",
+                    },
+                  ]}
+                />
+              )}
             />
           </div>
         </div>
