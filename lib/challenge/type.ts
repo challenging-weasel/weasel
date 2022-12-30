@@ -1,3 +1,17 @@
+import type { PartialDeep } from "type-fest";
+
+export interface IChallenge {
+  config: ChallengeConfig;
+  createdAt: string;
+  deletedAt?: string;
+  desc?: string;
+  id: number;
+  managerId: number;
+  publicId: string;
+  title?: string;
+  updatedAt: string;
+}
+
 export type ChallengeConfig = {
   version: 1;
   termCondition: TermCondition;
@@ -9,6 +23,12 @@ export type ChallengeConfig = {
   allowExceededconfirmation?: boolean; // 현재 조건이 충족해도 추가로 인증할 수 있는지 여부 (기록 남기기 용도..?)
   allowParticipationOngoing?: boolean; // 챌린지가 진행 도중에 참여할 수 있는지 여부
 };
+
+export interface IChallengeInput {
+  title?: string;
+  desc?: string;
+  config?: PartialDeep<ChallengeConfig>;
+}
 
 export type TermCondition =
   | CountTermCondition

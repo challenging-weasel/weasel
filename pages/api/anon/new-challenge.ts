@@ -2,19 +2,12 @@
 
 import { nanoid } from "nanoid";
 import type { NextRequest } from "next/server";
-import type { PartialDeep } from "type-fest";
 
 import { createChallengeConfig } from "@/lib/challenge/create";
-import type { ChallengeConfig } from "@/lib/challenge/type";
+import type { IChallengeInput } from "@/lib/challenge/type";
 import { getServerSideSupabaseClient } from "@/lib/supabase/server-side-client";
-import { userPublicIdCookieName } from "@/lib/user/type";
+import { checkAndGetUserFromCookie } from "@/lib/user/service";
 import { getJsonFromBody } from "@/lib/util";
-
-export interface IChallengeInput {
-  title?: string;
-  desc?: string;
-  config?: PartialDeep<ChallengeConfig>;
-}
 
 export default async function handler(req: NextRequest) {
   if (req.method !== "POST") {
@@ -23,15 +16,7 @@ export default async function handler(req: NextRequest) {
     });
   }
 
-  const cookie = req.cookies.get(userPublicIdCookieName);
-  if (!cookie) {
-    return new Response(
-      JSON.stringify({ error: `No ${userPublicIdCookieName} cookie` }),
-      {
-        status: 400,
-      }
-    );
-  }
+  const user = await checkAndGetUserFromCookie(req.cookies);
 
   const { desc, title, config } = await getJsonFromBody<IChallengeInput>(req);
 
@@ -41,27 +26,10 @@ export default async function handler(req: NextRequest) {
     });
   }
 
-  const db = getServerSideSupabaseClient();
-
-  const profileRes = await db
-    .from("profiles")
-    .select("id")
-    .eq("public_id", cookie.value)
-    .single();
-
-  if (!profileRes.data?.id) {
-    return new Response(
-      JSON.stringify({ error: `No profile for public id ${cookie.value}` }),
-      {
-        status: 400,
-      }
-    );
-  }
-
   const challengeRes = await getServerSideSupabaseClient()
     .from("challenges")
     .insert({
-      manager_id: profileRes.data.id,
+      manager_id: user.id,
       public_id: nanoid(),
       title,
       desc,
@@ -79,9 +47,11 @@ export default async function handler(req: NextRequest) {
     );
   }
 
-  return {
-    challenge: challengeRes.data,
-  };
+  return new Response(
+    JSON.stringify({
+      challenge: challengeRes.data,
+    })
+  );
 }
 
 export const config = {

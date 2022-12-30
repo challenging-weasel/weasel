@@ -1,48 +1,74 @@
 "use client";
 
-import { Button, DatePicker, Input, InputNumber, Select } from "antd";
+import {
+  Button,
+  Checkbox,
+  DatePicker,
+  Input,
+  InputNumber,
+  message,
+  Select,
+} from "antd";
 import type { Dayjs } from "dayjs";
+import { useRouter } from "next/navigation";
 import type React from "react";
-import { useMemo, useState } from "react";
-import type { Resolver } from "react-hook-form";
+import { useState } from "react";
+import type { FieldErrors, Resolver } from "react-hook-form";
 import { Controller, useForm } from "react-hook-form";
-import { HiPlus } from "react-icons/hi";
+import { HiMinus, HiPlus } from "react-icons/hi";
 
 import ErrorLabel from "@/components/ErrorLabel";
 import Label from "@/components/Label";
-import type { Repeated } from "@/lib/challenge/type";
+import type { IChallengeInput, Repeated } from "@/lib/challenge/type";
 
 type FormValues = {
-  name: string;
-  desc: string;
+  title: string;
+  desc?: string;
   startDate: Dayjs;
-  endDate: Dayjs;
+  endDate?: Dayjs;
   count: number;
   repeated: Repeated;
 };
 
 const resolver: Resolver<FormValues> = async (values) => {
-  console.log(values);
+  const errors: FieldErrors<FormValues> = {};
+  if (!values.title) {
+    errors.title = {
+      type: "required",
+      message: "필수 입력입니다.",
+    };
+  }
+  if (!values.startDate) {
+    errors.startDate = {
+      type: "required",
+      message: "필수 입력입니다.",
+      valueOf: undefined, // TODO: 타입스크립트 에러
+      toString: undefined, // TODO: 타입스크립트 에러
+    };
+  }
+
+  if (values.count < 1) {
+    errors.count = {
+      type: "min",
+      message: "1 이상이어야 합니다.",
+    };
+  }
+
+  const hasError = Object.keys(errors).length > 0;
+
   return {
-    values: values.name ? values : {},
-    errors: !values.name
-      ? {
-          name: {
-            type: "required",
-            message: "필수 입력입니다.",
-          },
-        }
-      : {},
+    values: !hasError ? values : {},
+    errors,
   };
 };
 
 const NewChallenge: React.FC = () => {
   const {
-    register,
     handleSubmit,
     formState: { errors },
     control,
     watch,
+    setValue,
   } = useForm<FormValues>({
     resolver,
     defaultValues: {
@@ -53,38 +79,93 @@ const NewChallenge: React.FC = () => {
       },
     },
   });
-  const onSubmit = handleSubmit((data) => console.log(data));
-  const [descriptionOpen, setDescriptionOpen] = useState(false);
 
-  const oo = useMemo(() => {
-    return register("name");
-  }, [register]);
+  const [messageApi, contextHolder] = message.useMessage();
+  const [submitProgressing, setSubmitProgressing] = useState(false);
+  const router = useRouter();
+
+  const onSubmit = handleSubmit(async (formData) => {
+    try {
+      setSubmitProgressing(true);
+
+      const input: IChallengeInput = {
+        title: formData.title,
+        config: {
+          version: 1,
+          termCondition: {
+            type: "count",
+            count: formData.count,
+            end: formData.endDate?.toISOString(),
+            start: formData.startDate.toISOString(),
+            repeated: formData.repeated,
+          },
+        },
+      };
+
+      const res = await fetch("/api/anon/new-challenge", {
+        body: JSON.stringify(input),
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const resData = await res.json();
+      if (resData.error) {
+        // eslint-disable-next-line no-console
+        console.error(resData.error);
+        return;
+      }
+
+      messageApi.open({
+        type: "success",
+        content: `챌린지가 성공적으로 생성되었습니다!`,
+      });
+
+      // eslint-disable-next-line no-console
+      console.log("new challenge success", resData);
+
+      setSubmitProgressing(true);
+      router.push(`/challenge/${resData.challenge.public_id}`); // TODO: typescript 지원
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (e: any) {
+      messageApi.open({
+        type: "error",
+        content: e?.message,
+      });
+      setSubmitProgressing(false);
+    }
+  });
+
+  const [descriptionOpen, setDescriptionOpen] = useState(false);
+  const [endDateOpen, setEndDateOpen] = useState(false);
 
   const formValues = watch();
 
   return (
     <form onSubmit={onSubmit}>
+      {contextHolder}
       <div className="p-3">
         <h1 className="mb-4 text-xl font-bold">새 챌린지 만들기</h1>
         <div className="flex flex-col mb-4">
-          <Label htmlFor="user_name">이름</Label>
+          <Label htmlFor="title">이름</Label>
           <Controller
             control={control}
-            name="name"
+            name="title"
             render={({ field }) => {
               return (
                 <Input
                   {...field}
                   type="text"
-                  id="user_name"
+                  id="title"
                   placeholder="이름을 작성하세요"
                   className="w-full max-w-xs input input-bordered input-secondary"
                 />
               );
             }}
           />
-          {errors?.name && (
-            <ErrorLabel htmlFor="user_name">{errors.name.message}</ErrorLabel>
+          {errors?.title && (
+            <ErrorLabel htmlFor="title">{errors.title.message}</ErrorLabel>
           )}
         </div>
         <div className="flex flex-col mb-4">
@@ -95,63 +176,119 @@ const NewChallenge: React.FC = () => {
               control={control}
               render={({ field }) => <DatePicker id="startDate" {...field} />}
             />
-            <Button
-              size="small"
-              onClick={() => setDescriptionOpen(true)}
-              className="inline-flex items-center gap-1 text-gray-400"
-            >
-              <HiPlus />
-              <span>종료일</span>
-            </Button>
+            {!endDateOpen ? (
+              <Button
+                onClick={() => setEndDateOpen(true)}
+                className="inline-flex items-center gap-1 text-gray-400"
+              >
+                <HiPlus />
+                <span>종료일</span>
+              </Button>
+            ) : null}
           </div>
+          {errors?.startDate && (
+            <ErrorLabel htmlFor="startDate">
+              {errors.startDate.message}
+            </ErrorLabel>
+          )}
         </div>
 
+        {endDateOpen ? (
+          <div className="flex flex-col mb-4">
+            <Label htmlFor="endDate">종료일</Label>
+            <div className="flex items-center gap-4">
+              <Controller
+                name="endDate"
+                control={control}
+                render={({ field }) => <DatePicker id="endDate" {...field} />}
+              />
+              <Button
+                onClick={() => {
+                  setEndDateOpen(false);
+                  setValue("endDate", undefined);
+                }}
+                className="inline-flex items-center gap-1 text-gray-400"
+              >
+                <HiMinus />
+                <span>제거</span>
+              </Button>
+            </div>
+          </div>
+        ) : null}
+
         <div className="flex flex-col mb-4">
-          <Label htmlFor="startDate">반복 주기</Label>
           <div className="flex items-center gap-2">
-            {formValues.repeated?.type === "period"}
-            <Controller
-              name="repeated.value"
-              control={control}
-              render={({ field }) => (
-                <InputNumber
-                  style={{ width: 50 }}
-                  id="repeated.value"
-                  {...field}
-                />
-              )}
-            />
+            <Label htmlFor="startDate">반복 주기</Label>
 
             <Controller
               name="repeated.type"
               control={control}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  id="repeated.type"
-                  options={[
-                    {
-                      value: "day",
-                      label: "일",
-                    },
-                    {
-                      value: "week",
-                      label: "주",
-                    },
-                    {
-                      value: "month",
-                      label: "월",
-                    },
-                  ]}
-                />
-              )}
+              render={({ field: { value, onChange, ...rest } }) => {
+                return (
+                  <Checkbox
+                    {...rest}
+                    checked={value === "no-repeat"}
+                    onChange={(e) => {
+                      if (e.target.checked) {
+                        onChange("no-repeat");
+                      } else {
+                        onChange("period");
+                      }
+                    }}
+                  >
+                    없음
+                  </Checkbox>
+                );
+              }}
             />
           </div>
+
+          {formValues.repeated?.type !== "no-repeat" && (
+            <div className="flex items-center gap-2">
+              {formValues.repeated?.type === "period"}
+              <Controller
+                name="repeated.value"
+                control={control}
+                render={({ field }) => (
+                  <InputNumber
+                    style={{ width: 50 }}
+                    id="repeated.value"
+                    {...field}
+                  />
+                )}
+              />
+
+              <Controller
+                name="repeated.unit"
+                control={control}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    id="repeated.type"
+                    options={[
+                      {
+                        value: "day",
+                        label: "일",
+                      },
+                      {
+                        value: "week",
+                        label: "주",
+                      },
+                      {
+                        value: "month",
+                        label: "월",
+                      },
+                    ]}
+                  />
+                )}
+              />
+            </div>
+          )}
         </div>
 
         <div className="flex flex-col mb-4">
           <Label htmlFor="count">인증 횟수</Label>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <Controller
               name="count"
               control={control}
@@ -159,12 +296,14 @@ const NewChallenge: React.FC = () => {
             />
             <span>회</span>
           </div>
+          {errors?.count ? (
+            <ErrorLabel htmlFor="count">{errors.count.message}</ErrorLabel>
+          ) : null}
         </div>
 
         <div className="flex flex-col mb-4">
           {!descriptionOpen ? (
             <Button
-              size="small"
               onClick={() => setDescriptionOpen(true)}
               className="text-gray-400"
             >
@@ -172,7 +311,7 @@ const NewChallenge: React.FC = () => {
             </Button>
           ) : (
             <>
-              <Label htmlFor="user_desc">설명</Label>
+              <Label htmlFor="desc">설명</Label>
               <Controller
                 control={control}
                 name="desc"
@@ -182,7 +321,7 @@ const NewChallenge: React.FC = () => {
                       {...field}
                       autoFocus
                       className="h-24 textarea textarea-bordered textarea-secondary"
-                      id="user_desc"
+                      id="desc"
                       placeholder="설명을 작성하세요"
                     />
                   );
@@ -198,6 +337,7 @@ const NewChallenge: React.FC = () => {
           htmlType="submit"
           className="rounded-none"
           size="small"
+          loading={submitProgressing}
         >
           만들기
         </Button>

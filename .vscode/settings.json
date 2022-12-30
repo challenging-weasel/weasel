@@ -1,8 +1,10 @@
 {
   "typescript.tsdk": "node_modules/.pnpm/typescript@4.9.4/node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
   "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll"
+  ],
   "typescript.tsserver.experimental.enableProjectDiagnostics": true,
   "eslint.lintTask.enable": true,
   "search.exclude": {
@@ -12,5 +14,6 @@
     "**/__mocks__": true,
     "**/__snapshots__": true,
     "pnpm-lock.yaml": true
-  }
+  },
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

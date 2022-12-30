@@ -12,3 +12,7 @@ export function getServerSideSupabaseConfig() {
 }
 
 export const defaultDateFormat = "YYYY-MM-DD";
+
+export function getSessionSecret() {
+  return process.env.SESSION_SECRET || "ghULFsDlD1bEl8S9MqUeJZQZeyzUvHTH";
+}

@@ -1,33 +1,18 @@
 "use client";
 
 import { Button, Input } from "antd";
-import { atom, useAtom } from "jotai";
-import { useHydrateAtoms } from "jotai/utils";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 import Label from "@/components/Label";
-import { userPublicIdAtom } from "@/lib/user/data";
+import type { IChallenge } from "@/lib/challenge/type";
+import type { IParticipation } from "@/lib/participation/type";
 import type { IUser } from "@/lib/user/type";
 
-const userAtom = atom<IUser>({
-  publicId: "",
-  name: "string",
-  desc: "string",
-  createdAt: "string",
-});
-
-export default function HomePage({ user: userFromServer }: { user: IUser }) {
-  useHydrateAtoms([[userAtom, userFromServer] as const]);
-  const [userPublicId, setUserPublicId] = useAtom(userPublicIdAtom);
-  const [user] = useAtom(userAtom);
-
-  useEffect(() => {
-    if (userPublicId !== user.publicId) {
-      setUserPublicId(user.publicId);
-    }
-  }, [setUserPublicId, user.publicId, userPublicId]);
-
+const HomePage: React.FC<{
+  user: IUser;
+  managingChallenges: IChallenge[];
+  participations: IParticipation[];
+}> = ({ user: userFromServer, managingChallenges }) => {
   return (
     <>
       <div className="bg-white border border-gray-400 ">
@@ -38,6 +23,7 @@ export default function HomePage({ user: userFromServer }: { user: IUser }) {
             <Input
               type="text"
               id="user_name"
+              value={userFromServer.name}
               placeholder="이름을 작성하세요"
               className="w-full max-w-xs input input-bordered input-secondary"
             />
@@ -47,6 +33,7 @@ export default function HomePage({ user: userFromServer }: { user: IUser }) {
             <Input.TextArea
               className="h-24 textarea textarea-bordered textarea-secondary"
               id="user_desc"
+              value={userFromServer.desc}
               placeholder="설명을 작성하세요"
             />
           </div>
@@ -67,7 +54,26 @@ export default function HomePage({ user: userFromServer }: { user: IUser }) {
               </Button>
             </Link>
           </div>
-          <div>things...</div>
+          <div>
+            {managingChallenges.map((challenge) => {
+              return (
+                <div
+                  key={challenge.id}
+                  className="flex items-center gap-4 mb-4"
+                >
+                  <Link
+                    href={`/challenge/${challenge.publicId}`}
+                    className="flex flex-col flex-1 gap-2 p-3 border shadow hover:bg-gray-100"
+                  >
+                    <h3 className="m-0 font-semibold">{challenge.title}</h3>
+                    {challenge.desc ? (
+                      <p className="text-gray-500">Challenge Description</p>
+                    ) : null}
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
         </div>
         <div className="flex-1 p-3 -ml-px bg-white border border-gray-400">
           <div className="flex items-center gap-4 mb-4">
@@ -83,4 +89,6 @@ export default function HomePage({ user: userFromServer }: { user: IUser }) {
       <h2 className="mb-4 text-xl font-bold">관리 중</h2>
     </>
   );
-}
+};
+
+export default HomePage;
